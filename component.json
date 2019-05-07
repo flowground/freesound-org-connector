@@ -1,0 +1,68 @@
+{
+    "title": "Freesound",
+    "description": "With the Freesound APIv2 you can browse, search, and retrieve information about Freesound users, packs, and the sounds themselves of course. You can find similar sounds to a given target (based on content analysis) and retrieve automatically extracted features from audio files, as well as perform advanced queries combining content analysis features and other metadata (tags, etc...). With the Freesound APIv2, you can also upload, comment, rate and bookmark sounds!",
+    "docsUrl": "https://freesound.org/docs/api/index.html",
+    "url": "https://api.apis.guru/v2/specs/freesound.org/2.0.0/swagger.json",
+    "envVars": {},
+    "credentials": {
+        "fields": {
+            "server": {
+                "label": "Server",
+                "viewClass": "SelectView",
+                "model": [
+                    "http://www.freesound.org/apiv2",
+                    "--- Custom URL"
+                ],
+                "required": true
+            },
+            "otherServer": {
+                "label": "Custom Server URL",
+                "viewClass": "TextFieldView"
+            }
+        }
+    },
+    "triggers": {
+        "startFlow": {
+            "main": "./lib/triggers/startFlow.js",
+            "type": "polling",
+            "title": "Start Flow",
+            "fields": {}
+        }
+    },
+    "actions": {
+        "searchText": {
+            "main": "./lib/actions/searchText.js",
+            "title": "Search sounds",
+            "description": "This resource allows searching sounds in Freesound by matching their tags and other kinds of metadata.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/searchText.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "getSoundById": {
+            "main": "./lib/actions/getSoundById.js",
+            "title": "Details of a sound",
+            "description": "This resource allows the retrieval of detailed information about a sound.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/getSoundById.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        }
+    }
+}

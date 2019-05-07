@@ -1,0 +1,47 @@
+{
+    "type": "object",
+    "properties": {
+        "query": {
+            "required": false,
+            "type": "string"
+        },
+        "filter": {
+            "required": false,
+            "type": "string"
+        },
+        "sort": {
+            "required": false,
+            "type": "string",
+            "enum": [
+                "score",
+                "duration_desc",
+                "duration_asc",
+                "created_desc",
+                "created_asc",
+                "downloads_desc",
+                "downloads_asc",
+                "rating_desc",
+                "rating_asc"
+            ]
+        },
+        "group_by_pack": {
+            "required": false,
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 1
+        },
+        "page": {
+            "required": false,
+            "type": "integer",
+            "minimum": 1,
+            "default": 1
+        },
+        "page_size": {
+            "required": false,
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 150,
+            "default": 15
+        }
+    }
+}

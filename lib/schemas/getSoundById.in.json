@@ -1,0 +1,10 @@
+{
+    "type": "object",
+    "properties": {
+        "soundId": {
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+        }
+    }
+}
